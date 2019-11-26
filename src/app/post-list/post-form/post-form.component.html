@@ -1,0 +1,49 @@
+<div class="alert alert-danger" *ngIf="errorMessage">
+		{{ errorMessage }}
+</div>
+<div class="row justify-content-center">
+		<div class="col-lg-6 col-md-8">
+				<div class="card ">
+						<div class="card-header text-center  text-black-50">
+								<h2 style="font-weight: 300;">Nouveau post</h2>
+						</div>
+
+						<div class="card-body">
+								<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+										<div class="form-group">
+												<label for="title">
+													Titre
+												</label>
+												<input id="title" type="text" formControlName="title" class="form-control" [ngClass]="{'is-invalid':
+																	(f.title.touched || f.title.dirty) && f.title.errors}" />
+												<div class="invalid-feedback" *ngIf="(f.title.touched || f.title.dirty) && f.title.errors">
+														<i *ngIf="f.title.errors.required" >
+																<i class="fa fa-exclamation-triangle"></i> Ce champs est requis
+														</i>
+														<i *ngIf="f.title.errors.pattern">
+																<i class="fa fa-exclamation-triangle"></i> Les caractères permis sont les chiffres, les lettres et '- _' .
+														</i>
+												</div>
+										</div>
+										<div class="form-group">
+												<label for="content">
+													Contenu
+												</label>
+												<textarea rows="4" id="content" type="text" formControlName="content" class="form-control" [ngClass]="{'is-invalid':
+																	(f.content.touched || f.content.dirty) && f.content.errors}" ></textarea>
+												<div class="invalid-feedback" *ngIf="(f.content.touched || f.content.dirty) && f.content.errors">
+														<i *ngIf="f.content.errors.required" >
+																<i class="fa fa-exclamation-triangle"></i> Ce champs est requis
+														</i>
+												</div>
+										</div>
+								
+										<hr />
+										<button class="btn-outline-secondary btn btn-block" [disabled]="postForm.invalid">
+												Shine
+										</button>
+								</form>
+						</div>
+				</div>
+		</div>
+</div>

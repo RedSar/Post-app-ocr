@@ -1,0 +1,19 @@
+<li class="list-group-item" [ngClass]="getClassesObject()">
+  <h4>
+    {{ title
+    }}<i class="float-right" style="font-size: small;">{{
+      created_at | date: "short"
+    }}</i>
+    <hr />
+  </h4>
+
+  <p>{{ content }}</p>
+
+  <button class="btn btn-outline-success btn-sm mr-3" (click)="onLike(key)">
+    Love it! ({{ getLikes() }})
+  </button>
+  <button class="btn btn-outline-danger btn-sm" (click)="onDislike(key)">
+    Don't love it! ({{ getDislikes() }})
+  </button>
+  <button (click)="onDelete(key)" class="btn btn-outline-danger btn-sm float-right"><i class="fa fa-trash-o"></i> Supprimer</button>
+</li>
